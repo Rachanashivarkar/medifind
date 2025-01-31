@@ -1,5 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+
+// Import images
+import customerImg from './images/Customer.png';
+import medicalStoreImg from './images/Medical.png';
+import deliveryBoyImg from './images/Delievery boy.png';
 
 const Register = () => {
   const registerPageStyle = {
@@ -20,22 +25,34 @@ const Register = () => {
     backgroundColor: '#f4f4f4',
     borderRadius: '8px',
     padding: '20px',
-    width: '200px',
+    width: '220px',
+    minHeight: '300px',
+    cursor: 'pointer', 
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease', 
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    transition: 'transform 0.3s',
+    textAlign: 'center',
   };
-
   const cardHoverStyle = {
-    transform: 'translateY(-10px)',
+    transform: 'scale(1.05)', 
+    boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
   };
 
   const cardTitleStyle = {
     marginBottom: '10px',
+    fontSize: '18px',
+    fontWeight: 'bold',
   };
 
   const cardTextStyle = {
     fontSize: '14px',
     color: '#555',
+    marginTop: '8px',
+  };
+
+  const imageStyle = {
+    width: '100px',
+    height: '100px',
+    marginBottom: '10px',
   };
 
   return (
@@ -43,27 +60,30 @@ const Register = () => {
       <h2>Register</h2>
       {/* Cards Container */}
       <div style={cardsContainerStyle}>
-        {/* Card 1 */}
-        <Link to="/Customer" style={{ textDecoration: 'none' }}>
+        {/* Card 1 - Customer */}
+        <Link to="/Customer" style={{ textDecoration: 'none', color: 'black' }}>
           <div style={cardStyle} className="card">
+            <img src={customerImg} alt="Customer" style={imageStyle} />
             <h3 style={cardTitleStyle}>Register as a Customer</h3>
-            <p style={cardTextStyle}>Information about card 1.</p>
+            <p style={cardTextStyle}>Get medicines delivered to your doorstep.</p>
           </div>
         </Link>
 
-        {/* Card 2 */}
-        <Link to="/MedicalStore" style={{ textDecoration: 'none' }}>
+        {/* Card 2 - Medical Store */}
+        <Link to="/MedicalStore" style={{ textDecoration: 'none', color: 'black' }}>
           <div style={cardStyle} className="card">
-            <h3 style={cardTitleStyle}>Register as a Medical store</h3>
-            <p style={cardTextStyle}>Information about card 2.</p>
+            <img src={medicalStoreImg} alt="Medical Store" style={imageStyle} />
+            <h3 style={cardTitleStyle}>Register as a Medical Store</h3>
+            <p style={cardTextStyle}>Sell your medicines online with ease.</p>
           </div>
         </Link>
 
-        {/* Card 3 */}
-        <Link to="/DeliveryBoy" style={{ textDecoration: 'none' }}>
+        {/* Card 3 - Delivery Boy */}
+        <Link to="/DeliveryBoy" style={{ textDecoration: 'none', color: 'black' }}>
           <div style={cardStyle} className="card">
-            <h3 style={cardTitleStyle}>Register as a Delivery boy</h3>
-            <p style={cardTextStyle}>Information about card 3.</p>
+            <img src={deliveryBoyImg} alt="Delivery Boy" style={imageStyle} />
+            <h3 style={cardTitleStyle}>Register as a Delivery Boy</h3>
+            <p style={cardTextStyle}>Deliver medicines quickly and efficiently.</p>
           </div>
         </Link>
       </div>
