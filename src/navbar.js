@@ -11,7 +11,6 @@ function Navbar() {
     };
 
     const registerAs = (role) => {
-        // Handle register action (can be redirected or processed)
         console.log(`Register as ${role}`);
     };
 
@@ -25,13 +24,11 @@ function Navbar() {
                     <li><a href="#">Track Order</a></li>
                     <li>
                         <a href="#" onClick={toggleRegisterDropdown}>Register</a>
-                        {isDropdownVisible && (
-                            <div id="register-dropdown" className="dropdown-menu">
-                                <a href="./Pages/customer.html" onClick={() => registerAs('user')}>Register as Customer</a>
-                                <a href="./Pages/medical.html" onClick={() => registerAs('medical-store')}>Register as Medical Store</a>
-                                <a href="./Pages/doctor.html" onClick={() => registerAs('doctor')}>Register as Doctor</a>
-                            </div>
-                        )}
+                        <div className={`dropdown-menu ${isDropdownVisible ? 'show' : ''}`}> {/* <-- Key change here */}
+                            <a href="#" onClick={() => registerAs('customer')}><p class="p">Register as Customer</p></a>
+                            <a href="#" onClick={() => registerAs('medical-store')}><p class="p">Register as Medical Store</p></a>
+                            <a href="#" onClick={() => registerAs('delivery-boy')}><p class="p">Register as Delivery Boy</p></a>
+                        </div>
                     </li>
                     <li><a href="./login.html">Login</a></li>
                     <li><a href="./contact.html">Contact Us</a></li>
@@ -48,12 +45,8 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
-
-            
         </div>
-        
     );
 }
-
 
 export default Navbar;

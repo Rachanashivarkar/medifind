@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./App.css";
 import bike from "./images/hero img 2.png";
 import Navbar from "./navbar";
+import Footer from './Footer';
 
 function App() {
     const [uploadStatus, setUploadStatus] = useState('');
@@ -48,6 +49,7 @@ function App() {
                     </button>
                 </div>
             </div>
+            <Footer/> 
         </div>
     );
 }
