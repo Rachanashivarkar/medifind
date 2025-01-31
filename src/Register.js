@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Register = () => {
   const registerPageStyle = {
@@ -42,18 +43,29 @@ const Register = () => {
       <h2>Register</h2>
       {/* Cards Container */}
       <div style={cardsContainerStyle}>
-        <div style={cardStyle} className="card">
-          <h3 style={cardTitleStyle}>Card 1</h3>
-          <p style={cardTextStyle}>Information about card 1.</p>
-        </div>
-        <div style={cardStyle} className="card">
-          <h3 style={cardTitleStyle}>Card 2</h3>
-          <p style={cardTextStyle}>Information about card 2.</p>
-        </div>
-        <div style={cardStyle} className="card">
-          <h3 style={cardTitleStyle}>Card 3</h3>
-          <p style={cardTextStyle}>Information about card 3.</p>
-        </div>
+        {/* Card 1 */}
+        <Link to="/Customer" style={{ textDecoration: 'none' }}>
+          <div style={cardStyle} className="card">
+            <h3 style={cardTitleStyle}>Register as a Customer</h3>
+            <p style={cardTextStyle}>Information about card 1.</p>
+          </div>
+        </Link>
+
+        {/* Card 2 */}
+        <Link to="/MedicalStore" style={{ textDecoration: 'none' }}>
+          <div style={cardStyle} className="card">
+            <h3 style={cardTitleStyle}>Register as a Medical store</h3>
+            <p style={cardTextStyle}>Information about card 2.</p>
+          </div>
+        </Link>
+
+        {/* Card 3 */}
+        <Link to="/DeliveryBoy" style={{ textDecoration: 'none' }}>
+          <div style={cardStyle} className="card">
+            <h3 style={cardTitleStyle}>Register as a Delivery boy</h3>
+            <p style={cardTextStyle}>Information about card 3.</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -9,6 +9,9 @@ import Trackorder from './Trackorder';
 import Register from './Register';
 import Login from './Login';
 import Contact from './Contact';
+import Customer from './Customer'; 
+import MedicalStore from './MedicalStore';
+import DeliveryBoy from './DeliveryBoy';
 
 function App() {
     const [uploadStatus, setUploadStatus] = useState('');
@@ -65,6 +68,9 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/Customer" element={<Customer />} />
+                <Route path="/MedicalStore" element={<MedicalStore />} />
+                <Route path="/DeliveryBoy" element={<DeliveryBoy />} />
             </Routes>
             <Footer /> {/* Footer */}
         </Router>
