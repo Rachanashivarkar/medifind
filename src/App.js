@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Tesseract from 'tesseract.js';  // Import Tesseract.js
 import bike from "./images/hero img 2.png";
 import Navbar from "./navbar";
 import Footer from './Footer';
@@ -15,23 +16,37 @@ import DeliveryBoy from './DeliveryBoy';
 
 function App() {
     const [uploadStatus, setUploadStatus] = useState('');
+    const [extractedText, setExtractedText] = useState(''); // Store extracted text
 
-    const handleFileUpload = (event) => {
+    const handleFileUpload = async (event) => {
         const file = event.target.files[0];
         if (file) {
-            setUploadStatus('Prescription uploaded successfully!');
+            setUploadStatus('Scanning prescription...');
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = async () => {
+                Tesseract.recognize(
+                    reader.result, 
+                    'eng', // Language (English)
+                    {
+                        logger: (m) => console.log(m), // Log progress
+                    }
+                ).then(({ data: { text } }) => {
+                    setExtractedText(text); // Store extracted text
+                    setUploadStatus('Prescription scanned successfully!');
+                }).catch((error) => {
+                    console.error("OCR Error:", error);
+                    setUploadStatus('Error scanning prescription.');
+                });
+            };
         }
     };
 
-    const handleShopNowClick = () => {
-        console.log('Shop Now button clicked');
-    };
-
     return (
-        <Router> {/* Wrap everything in Router */}
-            <Navbar /> {/* Navigation bar */}
-            <Routes> {/* Define Routes */}
-                {/* Home Route */}
+        <Router> {}
+            <Navbar /> {}
+            <Routes> {}
                 <Route path="/" element={
                     <div>
                         <h1 className="heading">Get Medicines Delivered to Your Doorstep, Fast and Convenient!</h1>
@@ -54,7 +69,13 @@ function App() {
                                         {uploadStatus}
                                     </p>
                                 )}
-                                <button className="cta-secondary" onClick={handleShopNowClick}>
+                                {extractedText && (
+                                    <div className="extracted-text">
+                                        <h3>Extracted Medicines:</h3>
+                                        <p>{extractedText}</p>
+                                    </div>
+                                )}
+                                <button className="cta-secondary">
                                     Shop Now
                                 </button>
                             </div>
