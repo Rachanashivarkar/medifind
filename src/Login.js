@@ -45,7 +45,7 @@ function Login() {
           </form>
           <div className="additional-links">
             <p className="forgot-password">
-              <a href="/forget-password">Forgot Password?</a>
+              <a href="/Forget">Forgot Password?</a>
             </p>
             <p className="register-link">
               Don't have an account?{" "}

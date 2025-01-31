@@ -13,7 +13,7 @@ import Contact from './Contact';
 import Customer from './Customer'; 
 import MedicalStore from './MedicalStore';
 import DeliveryBoy from './DeliveryBoy';
-
+import Forget from './Forget';
 function App() {
     const [uploadStatus, setUploadStatus] = useState('');
     const [extractedText, setExtractedText] = useState(''); // Store extracted text
@@ -92,6 +92,8 @@ function App() {
                 <Route path="/Customer" element={<Customer />} />
                 <Route path="/MedicalStore" element={<MedicalStore />} />
                 <Route path="/DeliveryBoy" element={<DeliveryBoy />} />
+                <Route path="/Forget" element={<Forget />} />
+
             </Routes>
             <Footer /> {/* Footer */}
         </Router>
