@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './navbar.css';
+
 import bell from "./images/bell.png";
 import cart from "./images/shopping-cart (4).png";
 
@@ -14,24 +16,32 @@ function Navbar() {
         console.log(`Register as ${role}`);
     };
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest(".dropdown-menu") && !event.target.closest(".register-link")) {
+                setIsDropdownVisible(false);
+            }
+        };
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     return (
         <div>
             <nav>
                 <div className="logo">MediFind</div>
                 <ul className="nav-links">
-                    <li><a href="./../index.html">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Track Order</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/products">Products</Link></li>
+                    <li><Link to="/track-order">Track Order</Link></li>
                     <li>
-                        <a href="#" onClick={toggleRegisterDropdown}>Register</a>
-                        <div className={`dropdown-menu ${isDropdownVisible ? 'show' : ''}`}> {/* <-- Key change here */}
-                            <a href="#" onClick={() => registerAs('customer')}><p class="p">Register as Customer</p></a>
-                            <a href="#" onClick={() => registerAs('medical-store')}><p class="p">Register as Medical Store</p></a>
-                            <a href="#" onClick={() => registerAs('delivery-boy')}><p class="p">Register as Delivery Boy</p></a>
-                        </div>
+                    <Link to="/Register">Register</Link>
                     </li>
-                    <li><a href="./login.html">Login</a></li>
-                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/contact">Contact Us</Link></li>
                 </ul>
                 <div className="nav-actions">
                     <div className="search-bar">

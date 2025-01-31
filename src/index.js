@@ -1,8 +1,8 @@
-
 import ReactDOM from 'react-dom/client';
-
-import App from './App';
+import './index.css';
+import App from './App'; // Import the App component
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
 
+// Render the App component, which handles routing
+root.render(<App />);
