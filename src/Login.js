@@ -13,13 +13,13 @@ function Login() {
     if (selectedRole) {
       switch (selectedRole) {
         case "customer":
-          window.location.href = "/register-customer"; // Update this route
+          window.location.href = "/Customer"; // Update this route
           break;
         case "medical-store":
-          window.location.href = "/register-medical-store"; // Update this route
+          window.location.href = "/MedicalStore"; // Update this route
           break;
         case "delivery-boy":
-          window.location.href = "/register-delivery-boy"; // Update this route
+          window.location.href = "/DeliveryBoy"; // Update this route
           break;
         default:
           break;
@@ -45,7 +45,7 @@ function Login() {
           </form>
           <div className="additional-links">
             <p className="forgot-password">
-              <a href="/forget-password">Forgot Password?</a>
+              <a href="/Forget">Forgot Password?</a>
             </p>
             <p className="register-link">
               Don't have an account?{" "}
