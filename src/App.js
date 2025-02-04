@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Tesseract from 'tesseract.js';  // Import Tesseract.js
 import bike from "./images/hero img 2.png";
 import Navbar from "./navbar";
 import Footer from './Footer';
@@ -14,39 +13,33 @@ import Customer from './Customer';
 import MedicalStore from './MedicalStore';
 import DeliveryBoy from './DeliveryBoy';
 import Forget from './Forget';
-function App() {
-    const [uploadStatus, setUploadStatus] = useState('');
-    const [extractedText, setExtractedText] = useState(''); // Store extracted text
 
-    const handleFileUpload = async (event) => {
+function App() {
+    const [imageSrc, setImageSrc] = useState(null);
+    const fileInputRef = useRef(null); // Reference for file input
+
+    const handleFileUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
-            setUploadStatus('Scanning prescription...');
-
             const reader = new FileReader();
             reader.readAsDataURL(file);
-            reader.onload = async () => {
-                Tesseract.recognize(
-                    reader.result, 
-                    'eng', // Language (English)
-                    {
-                        logger: (m) => console.log(m), // Log progress
-                    }
-                ).then(({ data: { text } }) => {
-                    setExtractedText(text); // Store extracted text
-                    setUploadStatus('Prescription scanned successfully!');
-                }).catch((error) => {
-                    console.error("OCR Error:", error);
-                    setUploadStatus('Error scanning prescription.');
-                });
+            reader.onload = () => {
+                setImageSrc(reader.result);
             };
         }
     };
 
+    const removeImage = () => {
+        setImageSrc(null);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ''; // Reset file input
+        }
+    };
+
     return (
-        <Router> {}
-            <Navbar /> {}
-            <Routes> {}
+        <Router>
+            <Navbar />
+            <Routes>
                 <Route path="/" element={
                     <div>
                         <h1 className="heading">Get Medicines Delivered to Your Doorstep, Fast and Convenient!</h1>
@@ -63,18 +56,17 @@ function App() {
                                     capture="environment"
                                     style={{ display: 'none' }}
                                     onChange={handleFileUpload}
+                                    ref={fileInputRef} // Assign ref to input
                                 />
-                                {uploadStatus && (
-                                    <p id="upload-status" style={{ marginTop: '10px', color: 'green' }}>
-                                        {uploadStatus}
-                                    </p>
-                                )}
-                                {extractedText && (
-                                    <div className="extracted-text">
-                                        <h3>Extracted Medicines:</h3>
-                                        <p>{extractedText}</p>
+
+                                {/* Display Uploaded Image */}
+                                {imageSrc && (
+                                    <div className="uploaded-image-container">
+                                        <img src={imageSrc} alt="Prescription Preview" className="uploaded-image" />
+                                        <button className="remove-image" onClick={removeImage}>×</button>
                                     </div>
                                 )}
+
                                 <button className="cta-secondary">
                                     Shop Now
                                 </button>
@@ -82,7 +74,7 @@ function App() {
                         </div>
                     </div>
                 } />
-                
+
                 {/* Other Routes */}
                 <Route path="/products" element={<Products />} />
                 <Route path="/trackorder" element={<Trackorder />} />
@@ -93,9 +85,8 @@ function App() {
                 <Route path="/MedicalStore" element={<MedicalStore />} />
                 <Route path="/DeliveryBoy" element={<DeliveryBoy />} />
                 <Route path="/Forget" element={<Forget />} />
-
             </Routes>
-            <Footer /> {/* Footer */}
+            <Footer />
         </Router>
     );
 }
