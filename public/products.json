@@ -1,0 +1,144 @@
+[
+    {
+      "id": 1,
+      "name": "Paracetamol 500mg",
+      "description": "Relieves pain and fever.",
+      "price": 5.99,
+      "image": "paracetamol.jpg", 
+      "category": "Pain Relief"
+    },
+    {
+      "id": 2,
+      "name": "Ibuprofen 200mg",
+      "description": "Reduces pain and inflammation.",
+      "price": 7.50,
+      "image": "ibuprofen.jpg",
+      "isSubscription": false,
+      "category": "Pain Relief"
+    },
+    {
+      "id": 3,
+      "name": "Aspirin 300mg",
+      "description": "Relieves pain, fever, and inflammation.",
+      "price": 4.25,
+      "image": "aspirine.jpg",
+      "isSubscription": false,
+      "category": "Pain Relief"
+    },
+    {
+      "id": 4,
+      "name": "Naproxen 250mg",
+      "description": "Long-lasting pain relief.",
+      "price": 9.99,
+      "image": "naproxen.jpg",
+      "isSubscription": false,
+      "category": "Pain Relief"
+    },
+    {
+      "id": 5,
+      "name": "Cough Syrup",
+      "description": "Soothes coughs and sore throats.",
+      "price": 8.50,
+      "image": "cough syrup.jpg",
+      "category": "Cough & Cold"
+    },
+    {
+      "id": 6,
+      "name": "Bandages",
+      "description": "For minor cuts and scrapes.",
+      "price": 3.25,
+      "image": "bandages.jpg",
+      "category": "Cough & Cold"
+    },
+    {
+      "id": 7,
+      "name": "Antiseptic wipes",
+      "description": "Cleans and disinfects wounds.",
+      "price": 4.75,
+      "image": "antiseptic wipes.jpg",
+      "category": "Cough & Cold"
+    },
+
+
+    {
+      "id": 8,
+      "name": "Pain Relief Gel",
+      "description": "Topical pain relief for muscles and joints.",
+      "price": 12.99,
+      "image": "pain_releif_gel.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 9,
+      "name": "Multivitamin Tablets",
+      "description": "Daily essential vitamins and minerals.",
+      "price": 15.50,
+      "image": "multi_vitamin_tablets.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 10,
+      "name": "First Aid Kit",
+      "description": "Comprehensive kit for minor emergencies.",
+      "price": 29.99,
+      "image": "first_aid_kit.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 11,
+      "name": "Allergy Relief Tablets",
+      "description": "Relieves allergy symptoms.",
+      "price": 9.25,
+      "image": "allergy_relief_tablets.jpg",
+      "isSubscription": false
+    },
+      {
+      "id": 12,
+      "name": "Probiotic Capsules",
+      "description": "Supports gut health.",
+      "price": 18.75,
+      "image": "probiotic_capsules.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 13,
+      "name": "Thermometer (Digital)",
+      "description": "Accurate temperature readings.",
+      "price": 14.99,
+      "image": "thermometer.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 14,
+      "name": "Vitamin D Supplements",
+      "description": "Essential for bone health.",
+      "price": 7.99,
+      "image": "vitamin-d.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 15,
+      "name": "Omega-3 Fish Oil Capsules",
+      "description": "Supports heart and brain health.",
+      "price": 14.25,
+      "image": "fish oil.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 16,
+      "name": "Hand Sanitizer",
+      "description": "Kills germs and bacteria.",
+      "price": 3.50,
+      "image": "hand anitizer.jpg",
+      "isSubscription": false
+    },
+    {
+      "id": 17,
+      "name": "Sunscreen SPF 30",
+      "description": "Protects against harmful UV rays.",
+      "price": 10.99,
+      "image": "sunscreen.jpg",
+      "isSubscription": false
+    }
+  ]
+  
