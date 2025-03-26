@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@firebase/analytics": "^0.10.11",
+    "@firebase/app": "^0.11.1",
+    "@firebase/auth": "^1.9.0",
+    "@firebase/firestore": "^4.7.8",
+    "@firebase/storage": "^0.13.6",
     "cra-template": "1.2.0",
+    "firebase": "^11.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.4",
