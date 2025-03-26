@@ -1,35 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
-
 import bell from "./images/bell.png";
 import cart from "./images/shopping-cart (4).png";
-import CartContext from './CartContext'; // Import CartContext
+import { useCart } from './CartContext';
 
-function Navbar() {
-    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-    const { cartItems } = useContext(CartContext); // Access cartItems from context
-    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-    const toggleRegisterDropdown = () => {
-        setIsDropdownVisible(!isDropdownVisible);
-    };
-
-    const registerAs = (role) => {
-        console.log(`Register as ${role}`);
-    };
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!event.target.closest(".dropdown-menu") && !event.target.closest(".register-link")) {
-                setIsDropdownVisible(false);
-            }
-        };
-        document.addEventListener("click", handleClickOutside);
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
+const Navbar = () => {
+    const { cartItems, loading } = useCart();
+    const cartCount = loading ? 0 : cartItems.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <div>
@@ -40,16 +18,18 @@ function Navbar() {
                     <li><Link to="/products">Products</Link></li>
                     <li><Link to="/track-order">Track Order</Link></li>
                     <li><Link to="/Register">Register</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/Login-as">Login</Link></li>
+                 
                     <li><Link to="/contact">Contact Us</Link></li>
+                    <li><Link to="/profile">Profile</Link></li> 
                 </ul>
                 <div className="nav-actions">
                     <div className="search-bar">
                         <input type="text" placeholder="Search medicines..." />
                     </div>
-                    <Link to="/cart" className="cart-icon"> {/* Link to cart page */}
+                    <Link to="/cart" className="cart-icon">
                         <img src={cart} alt="Cart Icon" />
-                        {cartCount > 0 && <span className="cart-count">{cartCount}</span>} {/* Display count */}
+                        {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                     </Link>
                     <div className="notification-icon" id="reminder-button">
                         <img src={bell} height="25px" style={{ cursor: 'pointer' }} />
@@ -58,6 +38,6 @@ function Navbar() {
             </nav>
         </div>
     );
-}
+};
 
 export default Navbar;
