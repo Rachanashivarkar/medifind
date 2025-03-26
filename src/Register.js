@@ -86,6 +86,7 @@ const Register = () => {
             <p style={cardTextStyle}>Deliver medicines quickly and efficiently.</p>
           </div>
         </Link>
+        
       </div>
     </div>
   );
